@@ -1,0 +1,6 @@
+# .gitignore
+# rosettacode-uva
+
+# Emacs temporary files
+*~
+\#*#

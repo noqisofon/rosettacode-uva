@@ -1,0 +1,37 @@
+
+shared void main() {
+    /*
+       シェルスクリプトがやっているような方法で文字列リテラルに式を埋め込むことができます。
+       また、文字列リテラルを折ったりもできます。
+     */
+    writeLine( "Open doors (native):    ${native()}
+                Open doors (optimized): ${optimized()}" );
+}
+
+/*
+   int* は int 型のポインタ(Uva にはポインタはありません)ではなく、複数の
+ */
+shared int* native(int count = 100) {
+    variable doors = [ for ( _ in 1..count ) closed ];
+
+    for ( step in 1..count ) {
+        doors = [ for ( i -> door in doors.indexed )
+                  let index = i + 1
+                  if step == 1 || step.divides( index ) then
+                    door.toggle()
+                  else
+                    door
+                ];
+    }
+    return doors.indexesWhere( door => door == opened ).map( 1.succ() );
+}
+
+shared int* optimized(int count = 100) =>
+    { for ( i in 1..count ) i * i }.takeWhile( count.notSmallerThen );
+
+shared abstract class Door(shared actual String status) of opened | closed {
+    shared formal Door toggle();
+}
+
+object opened extends Door( "opened" ) { toggle() => closed; }
+object closed extends Door( "closed" ) { toggle() => opened; }
