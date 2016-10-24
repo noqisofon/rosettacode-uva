@@ -7,13 +7,13 @@
 import uva.collections { HashMap };
 ```
 
-連想配列の要素、ペアは `<key> => <value>` のように記述します。
+連想配列の要素、ペアは `<key> -> <value>` のように記述します。
 
 ```
-variable Map<string, string> map = HashMap { "key1" => "hoge" };
+variable Map<string, string> map = HashMap { "key1" -> "hoge" };
 ```
 
-右オペランドの `HashMap { "key1" => "hoge" }` の部分はマップリテラルです。  
+右オペランドの `HashMap { "key1" -> "hoge" }` の部分はマップリテラルです。  
 `new`する場合はこのようにします:
 
 ```
