@@ -13,7 +13,7 @@ shared interface Callable<out Return, in Arguments>
 
 ### クロージャの型
 
-以下の関数の型は `Callable<int, (int, int)>' です。
+以下の関数の型は `Callable<int, (int, int)>` です。
 
 ```
 auto sum(int a, int b) => a + b;
