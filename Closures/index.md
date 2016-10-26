@@ -8,7 +8,7 @@
 
 ```
 shared interface Callable<out Return, in Arguments>
-    given Arguments satisfies Anything... {}
+    given Arguments satisfies ...Anything {}
 ```
 
 ### クロージャの型
